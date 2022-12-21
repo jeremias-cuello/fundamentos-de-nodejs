@@ -1,16 +1,17 @@
-console.log('Hola mundo!');
-console.log('primera instruccion');
+let nombredie = process.env.NOMBRE || 'sin nombre';
+let web = process.env.WEB || 'no tengo web';
 
-let i = 0;
+console.log('Hola ' + nombre);
+console.log('Mi web es ' + web);
 
-setInterval(() => {
-	console.log(i);
-	i++;
+// la nomenclatura de las variables de entorno es una combinacion de UPPERCASE con snake_case
 
-	if (i === 5) {
-		console.log('forzamos el error');
-		let a = 3 + z
-	}
-}, 1000);
+// en Linux
+// $ NOMBER=Jeremias node conceptos/entorno.js
 
-console.log('segunda instruccion');
+// para inicializar las variables de entorno en Windows es
+// powershell: $env:NOMBRE="Carlos"
+// powershell: node conceptos/entorno.js
+
+
+console.log('imprimiendo otra cosas');
