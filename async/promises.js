@@ -18,7 +18,8 @@ function hablar(nombre){
 	return new Promise((resolve, reject) => {
 		setTimeout(function(){
 			console.log('Bla Bla Bla Bla...');
-			resolve(nombre);
+			// resolve(nombre);
+			reject('Hay un error');
 		}, 1000)
 	})
 }
@@ -48,3 +49,11 @@ hola('Carlos')
 	.then(() => {
 		console.log('teminado el proceso');
 	})
+	.catch(error => { // cualquier error que ocurra en alguna funcion de arriba, desencadenara el catch
+		console.error('Ha habido un error');
+		console.error(error);
+	})
+
+	/**
+	 * siempre que se usen promesas se usan catch
+	 */
