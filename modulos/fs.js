@@ -7,12 +7,21 @@ const fs = require('fs');
 
 function leer(ruta, cb){
 	fs.readFile(ruta, (error, data) => {
-		console.log(data.toString());
-		cb();
+		cb(data.toString());
 	});
 }
 
-console.log('iniciamos proceso');
-leer(__dirname + "/archivo.txt", () => {
-	console.log("terminamos proceso");
-});
+function escribir(ruta, content, cb) {
+	fs.writeFile(ruta, content, function (error) {
+		if (error) {
+			cb('Ocurrio un error, no se ha podido escribir el archivo.');
+		} else {
+			cb('Se logro escribir el archivo');
+		}
+	});
+}
+
+leer(__dirname + "/archivo.txt", console.log);
+
+// si se quiere sobrescribir un archivo ponemos una ruta de un archivo existente
+escribir(__dirname + "/archivo.txt", "sobrescribiendo con contenido nuevo", console.log);
