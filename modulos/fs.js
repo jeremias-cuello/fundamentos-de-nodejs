@@ -24,4 +24,5 @@ function escribir(ruta, content, cb) {
 leer(__dirname + "/archivo.txt", console.log);
 
 // si se quiere sobrescribir un archivo ponemos una ruta de un archivo existente
-escribir(__dirname + "/archivo.txt", "sobrescribiendo con contenido nuevo", console.log);
+// si se quiere crear un archivo ponemos una ruta de un archivo inexistente asi lo crea
+escribir(__dirname + "/otroArchivo.txt", "otro Archivo \n linea 2 \n linea 3", console.log);
