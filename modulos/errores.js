@@ -5,9 +5,15 @@ function seRompe() {
 	return 3 + z;
 }
 
-function seRompeAsincrona() {
+function seRompeAsincrona(cb) {
 	setTimeout(() => {
-		seRompe();
+		try {
+			seRompe();
+			// cb();
+		} catch (err) {
+			console.error('ocurrio un error en la funcion asincrona');
+			cb(err);
+		}
 	}, 1000);
 }
 
@@ -20,7 +26,13 @@ try {
 }
 
 try{
-	seRompeAsincrona(); // no se captura el error porque al hacer asincrona corre en otro thread.
+	seRompeAsincrona((err) => {
+		if(err){
+			console.log(err.message);
+		} else {
+			console.log('terminando el programa');
+		}
+	}); // no se captura el error porque al hacer asincrona corre en otro thread.
 	// hay que poner un try-catch dentro de la funcion asincrona.
 } catch (err) {
 	console.error("OCURRIO UN ERROR DE LA FUNCION ASINCRONA"); // no corre
