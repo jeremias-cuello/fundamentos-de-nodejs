@@ -21,8 +21,13 @@ function escribir(ruta, content, cb) {
 	});
 }
 
-leer(__dirname + "/archivo.txt", console.log);
+function borrar(ruta, cb) {
+	fs.unlink(ruta, cb);
+}
+
+// leer(__dirname + "/archivo.txt", console.log);
 
 // si se quiere sobrescribir un archivo ponemos una ruta de un archivo existente
 // si se quiere crear un archivo ponemos una ruta de un archivo inexistente asi lo crea
 escribir(__dirname + "/otroArchivo.txt", "otro Archivo \n linea 2 \n linea 3", console.log);
+borrar(__dirname + "/otroArchivo.txt", console.log);
