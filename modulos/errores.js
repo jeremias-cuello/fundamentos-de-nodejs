@@ -5,12 +5,25 @@ function seRompe() {
 	return 3 + z;
 }
 
+function seRompeAsincrona() {
+	setTimeout(() => {
+		seRompe();
+	}, 1000);
+}
+
 try {
 	otraFuncion();
 } catch (error) {
 	console.error('Ocurrio un error');
 	console.error(error); // _todo el error
 	// console.error(error.message); // solo el mensaje
+}
+
+try{
+	seRompeAsincrona(); // no se captura el error porque al hacer asincrona corre en otro thread.
+	// hay que poner un try-catch dentro de la funcion asincrona.
+} catch (err) {
+	console.error("OCURRIO UN ERROR DE LA FUNCION ASINCRONA"); // no corre
 }
 
 console.log('esto se ejecuta');
