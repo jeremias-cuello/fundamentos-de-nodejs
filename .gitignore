@@ -1,0 +1,7 @@
+*.obj
+*.exp
+*.iobj
+*.ipdb
+*.lib
+*.node
+*.pdb
