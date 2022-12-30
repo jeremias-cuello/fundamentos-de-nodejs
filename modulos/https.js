@@ -1,7 +1,9 @@
 const http = require('http');
 const puerto = 3000;
 
-http.createServer(function (req, res) {
+http.createServer(router).listen(puerto);
+
+function router(req, res) {
 	res.writeHead(201, { 'Content-Type': 'text/html' }); // header() de php
 	res.writeHead(201, { 'Host': 'lo-que-sea/' });
 
@@ -15,13 +17,22 @@ http.createServer(function (req, res) {
 	// enviando mensaje a usuario
 	res.write('' +
 		'<script>' +
-			'alert("Hola")' +
+			'alert("Primera peticion")' +
 		'</script>' +
-		'Hola ya se usar http en NodeJS' +
-	'');
+		'');
 
-	res.end();
+	switch (req.url) {
+		case '/hola':
+			res.write('Hola que tal?');
+			res.end();
+			break;
 
-}).listen(puerto);
+		default:
+			res.write('Error 404.');
+			res.end();
+			break;
+	}
+
+}
 
 console.log('escuchando http en el puerto ' + puerto);
