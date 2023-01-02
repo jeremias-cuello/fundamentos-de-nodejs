@@ -6,10 +6,14 @@ console.group('modulo:');
 	console.log(modulo);
 console.groupEnd('modulo:');
 
-console.group('modulo(): ');
-	modulo();
-console.groupEnd('modulo(): ');
+console.group('modulo.saludar(): ');
+	modulo.saludar();
+console.groupEnd('modulo.saludar(): ');
 
-console.group('modulo.call(): ');
-	modulo.call();
-console.groupEnd('modulo.call(): ');
+console.group('modulo.property_1: ');
+	console.log(modulo.property_1);
+console.groupEnd('modulo.property_1: ');
+
+console.group('modulo.property_2: ');
+	console.log(modulo.property_2);
+console.groupEnd('modulo.property_2: ');
