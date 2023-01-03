@@ -7,3 +7,5 @@
 *.pdb
 *.png
 node_modules
+!/paquetes/utiles/original.png
+!/paquetes/utiles/resized.png
