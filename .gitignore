@@ -5,3 +5,5 @@
 *.lib
 *.node
 *.pdb
+*.png
+node_modules
