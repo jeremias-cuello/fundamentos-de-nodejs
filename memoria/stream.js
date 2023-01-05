@@ -38,11 +38,18 @@ console.log();
 const Transform = stream.Transform;
 
 function Mayus() {
-	Transform.call(this);
+	Transform.call(this); // llama al constructor Transform
 }
 
-util.inherits(Mayus, Transform)
+util.inherits(Mayus, Transform);
 
+// Transform tiene un metodo _transform declarado sin implementar, porque sin implementar?,
+// porque esta diseñado para que veas que necesita como parametros y para que hagas tus cosas sobre ese metodo.
+// que pasa? _transform hace cosas con los Stream Duplex para transformar los chunk. entonces a provechamos esas
+// cosas que hace _tranform, aprovechamos la capacidad que puede hacer. esta sin implementar a secas porque esta a
+// espera de que se pise con un metodo nativo que hagas vos. como lo haces? con herencia prototipal.
+
+// se debe llamar _transform para que se pise con el metodo heredado de Transform
 Mayus.prototype._transform = function (chunk, codif, cb) {
 	chunkMayus = chunk.toString().toUpperCase();
 	this.push(chunkMayus);
@@ -51,4 +58,20 @@ Mayus.prototype._transform = function (chunk, codif, cb) {
 
 let mayus = new Mayus();
 
-redeableStream.pipe(mayus).pipe(process.stdout);
+// pipe es un tecnica en informatica que consiste en ir transformando el flujo de datos de entrada pasandolo por
+// procesos secuenciales donde cada entrada de ellos es la salida del anterior.
+// data → [dataProcessed] → [dataProcessed] → [dataProcessed] → output
+
+let i = 0;
+
+process.stdout.on('pipe', (src) => {
+	console.log('algo esta llegando a process.stdout.');
+	// console.log(src); // objecto mayus
+});
+
+redeableStream // data
+	.pipe(mayus) // data processed
+	.pipe(process.stdout);
+
+// pipe es una funcion que sirve para agregarle un destino al flujo de datos de entrada
+// redeableStream pasa por el proceso mayus luego por la salida process.stdout
