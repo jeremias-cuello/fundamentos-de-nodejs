@@ -8,11 +8,13 @@ gulp.task('build', function(cb){
 })
 
 gulp.task('serve', function(cb){
-	gulp.src('www')
+	gulp.src('www/')
 		.pipe(server({
 			livereload: true,
 			open: true
-		}))
+		})
+	)
+	cb();
 })
 
 gulp.task('default', gulp.series('build', 'serve'));
