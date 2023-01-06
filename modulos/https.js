@@ -23,8 +23,9 @@ function router(req, res) {
 
 	switch (req.url) {
 		case '/hola':
-			res.write('Hola que tal?');
-			res.end();
+			let saludo = saludar();
+			res.write(saludo);
+			res.end(); // aca le deja al usuaio cargar la oagina porque antes todavia no responde
 			break;
 
 		default:
@@ -33,6 +34,10 @@ function router(req, res) {
 			break;
 	}
 
+}
+
+function saludar() {
+	return 'hola Que tal';
 }
 
 console.log('escuchando http en el puerto ' + puerto);
