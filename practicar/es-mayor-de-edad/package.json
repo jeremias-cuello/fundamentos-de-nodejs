@@ -1,0 +1,17 @@
+{
+  "name": "es-mayor-de-edad",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "is-number": "^7.0.0",
+    "number-is-float": "^2.0.0"
+  },
+	"type": "module",
+  "keywords": [],
+  "description": ""
+}
